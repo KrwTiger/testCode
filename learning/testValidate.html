@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test validation</title>
+</head>
+
+<body>
+    <form action="#" id="frmPaticipants" method="post">
+        <label for="EmployeeID">
+            EmployeeID :
+        </label>
+        <input type="text" maxlength="6" id="EmployeeID" name="EmployeeID">
+        <button type="submit">submit</button>
+    </form>
+
+    <form method="post" id="paticipantsForm">
+        <input type="submit" />
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#frmPaticipants").validate({
+                errorClass: 'input-validation-error',
+
+                rules: {
+                    EmployeeID: {
+                        required: true
+                    },
+                },
+                messages: {
+                    EmployeeID: {
+                        required: "*** test"
+                    },
+                },
+                submitHandler: function (form) {
+                    // do other things for a valid form
+                    form.submit();
+                }
+            });
+
+            $('#paticipantsForm').submit(function (e) {
+                e.preventDefault()
+            });
+            $("#paticipantsForm").validate();
+
+            for (i = 0; i <= 3; i++) {
+                var newPassenger = '<input type="text" name="EmployeeID' + i + '" id="EmployeeID' + i + '" class="employee-id">';
+                $("#paticipantsForm").append(newPassenger);
+
+                // เพิ่ม validation rules สำหรับ element ที่เพิ่งสร้าง
+                $("#EmployeeID" + i).rules('add', {
+                    required: true,
+                    number: true,
+                    messages: {
+                        required: "your custom message",
+                        number: "your number message"
+                    }
+                });
+
+                // ทำการ validate form
+
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

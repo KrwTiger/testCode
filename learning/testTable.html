@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DataTable Example</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
+  </head>
+  <body>
+    <table id="myTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>30</td>
+          <td>New York</td>
+        </tr>
+        <tr>
+          <td>Jane Doe</td>
+          <td>25</td>
+          <td>Los Angeles</td>
+        </tr>
+        <tr>
+          <td>Bob Smith</td>
+          <td>40</td>
+          <td>Chicago</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#myTable').DataTable();
+      } );
+    </script>
+  </body>
+</html>
